@@ -1,6 +1,4 @@
 """
-working on
-
 Package to create dataset, build training and prediction pipelines.
 
 This file should define or import all the functions needed to operate the
