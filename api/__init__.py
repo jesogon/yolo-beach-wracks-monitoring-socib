@@ -22,9 +22,9 @@ from ultralytics import YOLO, settings
 from aiohttp.web import HTTPException
 from deepaas.model.v2.wrapper import UploadedFile
 
-import yolov8_api as aimodel
+import beach_wracks_monitoring as aimodel
 from . import config, responses, schemas, utils
-from yolov8_api.utils import (
+from beach_wracks_monitoring.utils import (
     mlflow_fetch,
     mlflow_logging,
 )

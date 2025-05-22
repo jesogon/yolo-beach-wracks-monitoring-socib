@@ -13,9 +13,9 @@ from your_module import your_function as training
 
 # TODO: add your imports here
 import logging
-import yolov8_api.config as cfg
+import beach_wracks_monitoring.config as cfg
 from ultralytics import YOLO
-import yolov8_api.utils as utils
+import beach_wracks_monitoring.utils as utils
 
 
 logger = logging.getLogger(__name__)
