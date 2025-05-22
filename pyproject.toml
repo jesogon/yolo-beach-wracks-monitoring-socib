@@ -3,8 +3,8 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "yolov8_api" # todo: change to beach_wracks_monitoring
-description = "add api to yolov8"
+name = "beach_wracks_monitoring"
+description = "add api to beach_wracks_monitoring"
 # !! Authors and Authors_emails are taken from setup.py. Otherwise wrongly rendered !!
 readme = "README.md"
 requires-python = ">=3.8"

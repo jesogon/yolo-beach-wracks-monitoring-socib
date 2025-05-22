@@ -65,7 +65,7 @@ class PredArgsSchema(marshmallow.Schema):
             "or the pre-trained default model will be loaded "
             "depending on the task type."
         },
-        load_default=config.YOLOV8_DEFAULT_WEIGHTS[0],
+        load_default=config.YOLO_DEFAULT_WEIGHTS[0],
     )
     mlflow_fetch = fields.Boolean(
         metadata={
@@ -83,11 +83,10 @@ class PredArgsSchema(marshmallow.Schema):
             '"det" for object detection model\n'
             '"seg" for object segmentation model\n'
             '"cls" for object classification model\n'
-            '"obb" for  oriented bounding boxes object detection\n'
-            'The default is "det"',
-            "enum": config.YOLOV8_DEFAULT_TASK_TYPE,
+            '"obb" for  oriented bounding boxes object detection\n',
+            "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
-        load_default=config.YOLOV8_DEFAULT_TASK_TYPE[0],
+        load_default=config.YOLO_DEFAULT_TASK_TYPE[0],
     )
 
     imgsz = fields.List(
@@ -95,9 +94,9 @@ class PredArgsSchema(marshmallow.Schema):
         validate=validate.Length(max=2),
         metadata={
             "description": "image size as scalar or (h, w) list,"
-            " i.e. (704, 512). Note: must be multiple of max stride 32"
+            " i.e. (640, 480). Note: must be multiple of max stride 32"
         },
-        load_default=[704, 512],
+        load_default=[640, 480],
     )
 
     conf = fields.Float(
@@ -175,9 +174,8 @@ class TrainArgsSchema(marshmallow.Schema):
             '"det" for object detection model\n'
             '"seg" for object segmentation model\n'
             '"cls" for object classification model\n'
-            '"obb" for  oriented bounding boxes object detection\n'
-            'The default is "det"',
-            "enum": config.YOLOV8_DEFAULT_TASK_TYPE,
+            '"obb" for  oriented bounding boxes object detection\n',
+            "enum": config.YOLO_DEFAULT_TASK_TYPE,
         },
         load_default="det",
     )

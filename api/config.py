@@ -16,19 +16,15 @@ from pathlib import Path
 import datetime
 
 MODEL_LIST = [
-    "yolov8n.yaml",
-    "yolov8n.pt",
-    "yolov8s.yaml",
-    "yolov8s.pt",
-    "yolov8m.yaml",
-    "yolov8m.pt",
-    "yolov8l.yaml",
-    "yolov8l.pt",
-    "yolov8x.yaml",
-    "yolov8x.pt",
+    "YOLO11n-seg",
+    "YOLO11s-seg",
+    "YOLO11m-seg",
+    "YOLO11l-seg",
+    "YOLO11x-seg",
+    "YOLO11pretrained-seg",
 ]
 # Default AI model
-MODEL_NAME = os.getenv("MODEL_NAME", default="yolov8_api")
+MODEL_NAME = os.getenv("MODEL_NAME", default="beach_wracks_monitoring")
 
 # Get AI model metadata
 MODEL_METADATA = metadata.metadata(MODEL_NAME)
@@ -61,6 +57,10 @@ TEST_DATA_PATH = Path(TEST_DATA_PATH)
 MODELS_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models")
 MODELS_PATH = Path(MODELS_PATH)
 
+# Path definition for the pre-trained models
+DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/beach_wracks_segmentation/best.pt")
+DEFAULT_MODEL_PATH = Path(DEFAULT_MODEL_PATH)
+
 REMOTE_PATH = os.getenv("MODELS_PATH", default="models")
 # logging level across API modules can be setup via API_LOG_LEVEL,
 # options: DEBUG, INFO(default), WARNING, ERROR, CRITICAL
@@ -80,21 +80,21 @@ except KeyError as err:
 
 # Specify the default tasks related to your work among detection (det),
 # segmentation (seg), and classification (cls).
-YOLOV8_DEFAULT_TASK_TYPE = os.getenv(
-    "YOLOV8_DEFAULT_TASK_TYPE", default="det,seg,cls,obb"
+YOLO_DEFAULT_TASK_TYPE = os.getenv(
+    "YOLO_DEFAULT_TASK_TYPE", default="seg" # det,seg,cls,obb
 )
-YOLOV8_DEFAULT_TASK_TYPE = YOLOV8_DEFAULT_TASK_TYPE.split(",")
+YOLO_DEFAULT_TASK_TYPE = YOLO_DEFAULT_TASK_TYPE.split(",")
 
 
 # Specify default timestamped weights for your trained models
 # to be utilized during
 # prediction. Format them as timestamp1, timestamp2, timestamp3, ...
-YOLOV8_DEFAULT_WEIGHTS = os.getenv(
-    "YOLOV8_DEFAULT_WEIGHTS", default=None
+YOLO_DEFAULT_WEIGHTS = os.getenv(
+    "YOLO_DEFAULT_WEIGHTS", default=None
 )
-YOLOV8_DEFAULT_WEIGHTS = (
-    YOLOV8_DEFAULT_WEIGHTS.split(",")
-    if YOLOV8_DEFAULT_WEIGHTS
+YOLO_DEFAULT_WEIGHTS = (
+    YOLO_DEFAULT_WEIGHTS.split(",")
+    if YOLO_DEFAULT_WEIGHTS
     else [None]
 )
 

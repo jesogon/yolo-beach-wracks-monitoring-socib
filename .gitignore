@@ -149,3 +149,5 @@ data/raw/*
 wandb/*
 models/*
 
+# Allow the best model
+!models/beach_wracks_segmentation/best.pt

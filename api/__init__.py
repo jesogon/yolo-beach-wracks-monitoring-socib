@@ -50,6 +50,7 @@ def get_metadata():
     """
     try:  # Call your AI model metadata() method
         logger.info("Collecting metadata from: %s", config.MODEL_NAME)
+        print(config.BASE_PATH)
         metadata = {
             "author": config.MODEL_METADATA.get("authors"),
             "author-email": config.MODEL_METADATA.get(
@@ -59,7 +60,7 @@ def get_metadata():
             "license": config.MODEL_METADATA.get("license"),
             "version": config.MODEL_METADATA.get("version"),
             "models_local": utils.ls_dirs(config.MODELS_PATH),
-            "models_remote": utils.ls_remote(),
+            # "models_remote": utils.ls_remote(), 
             "datasets": utils.generate_directory_tree(
                 config.DATA_PATH
             ),
@@ -97,9 +98,10 @@ def predict(**args):
                     print("args_model", args["model"])
             else:
                 # No model fetched from MLflow, use the default model
-                args["model"] = utils.modify_model_name(
-                    "yolov8n.pt", args["task_type"]
-                )
+                args["model"] = config.DEFAULT_MODEL_PATH  # Only segmentation is enabled
+                # args["model"] = utils.modify_model_name(
+                #     "yolov8n.pt", args["task_type"]
+                # )
 
         else:
             path = os.path.join(args["model"], "weights/best.pt")
