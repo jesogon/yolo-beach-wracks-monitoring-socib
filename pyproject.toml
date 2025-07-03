@@ -3,8 +3,8 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "beach_wracks_monitoring"
-description = "add api to beach_wracks_monitoring"
+name = "socib-beach-wracks-identification"
+description = "DESCRIPTION"
 # !! Authors and Authors_emails are taken from setup.py. Otherwise wrongly rendered !!
 readme = "README.md"
 requires-python = ">=3.8"
@@ -18,12 +18,14 @@ classifiers = [
 dynamic = ["version", "dependencies"]
 
 # Add author and author email here
-authors = [{name= "Fahimeh Alibabaei", email= "khadijeh.alibabaei@kit.edu"} ,{name= "Lisana Berberi", email= "lisana.berberi@kit.edu"} ]
-#authors-email = ["khadijeh.alibabaei@kit.edu"]
+authors = [{name= "Jesus Soriano-Gonzalez", email= "jsoriano@socib.es"},
+           {name= "Josep Oliver-Sanso", email= "josep.oliverr@gmail.com"},
+           {name= "Fahimeh Alibabaei", email= "khadijeh.alibabaei@kit.edu"}]
+
 
 [project.urls]
-"Homepage" = "https://codebase.helmholtz.cloud/m-team/ai/ai4os-yolov8-torch"
-"Bug Tracker" = "https://codebase.helmholtz.cloud/m-team/ai/ai4os-yolov8-torch/issues"
+"Homepage" = "https://codebase.helmholtz.cloud/m-team/ai/socib-beach-wracks-identification"
+"Bug Tracker" = "https://codebase.helmholtz.cloud/m-team/ai/socib-beach-wracks-identification/issues"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
@@ -31,14 +33,14 @@ env = ["DATA_PATH=tests/data", "MODELS_PATH=tests/models"]
 addopts = "--import-mode=importlib"
 
 [tool.setuptools]
-packages = ["beach_wracks_monitoring", "beach_wracks_monitoring.api"]
+packages = ["socib-beach-wracks-identification", "socib-beach-wracks-identification.api"]
 
 [tool.setuptools.package-dir]
-"beach_wracks_monitoring.api" = "api"
+"socib-beach-wracks-identification.api" = "api"
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 version = { file = "VERSION" }
 
 [project.entry-points."deepaas.v2.model"]
-beach_wracks_monitoring = "beach_wracks_monitoring.api"
+socib-beach-wracks-identification = "socib-beach-wracks-identification.api"

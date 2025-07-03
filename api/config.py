@@ -21,10 +21,10 @@ MODEL_LIST = [
     "YOLO11m-seg",
     "YOLO11l-seg",
     "YOLO11x-seg",
-    "YOLO11pretrained-seg",
+    "yolo11_beach_wracks_identification",
 ]
 # Default AI model
-MODEL_NAME = os.getenv("MODEL_NAME", default="beach_wracks_monitoring")
+MODEL_NAME = os.getenv("MODEL_NAME", default="yolo11_beach_wracks_identification")
 
 # Get AI model metadata
 MODEL_METADATA = metadata.metadata(MODEL_NAME)
@@ -58,7 +58,7 @@ MODELS_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models")
 MODELS_PATH = Path(MODELS_PATH)
 
 # Path definition for the pre-trained models
-DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/beach_wracks_segmentation/best.pt")
+DEFAULT_MODEL_PATH = os.getenv("MODELS_PATH", default=BASE_PATH / "models/yolo11_beach_wracks_identification/best.pt")
 DEFAULT_MODEL_PATH = Path(DEFAULT_MODEL_PATH)
 
 REMOTE_PATH = os.getenv("MODELS_PATH", default="models")
@@ -81,7 +81,7 @@ except KeyError as err:
 # Specify the default tasks related to your work among detection (det),
 # segmentation (seg), and classification (cls).
 YOLO_DEFAULT_TASK_TYPE = os.getenv(
-    "YOLO_DEFAULT_TASK_TYPE", default="seg" # det,seg,cls,obb
+    "YOLO_DEFAULT_TASK_TYPE", default="seg" 
 )
 YOLO_DEFAULT_TASK_TYPE = YOLO_DEFAULT_TASK_TYPE.split(",")
 
@@ -106,7 +106,7 @@ try:
         default="https://mlflow.cloud.ai4eosc.eu/",
     )
     MLFLOW_EXPERIMENT_NAME = os.getenv(
-        "MLFLOW_EXPERIMENT_NAME", default="yolov8"
+        "MLFLOW_EXPERIMENT_NAME", default="yolo11_beach_wracks_identification"
     )
     MLFLOW_RUN = os.getenv(
         "MLFLOW_RUN",

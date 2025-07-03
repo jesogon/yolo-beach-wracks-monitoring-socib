@@ -1,6 +1,6 @@
 # ai4os-yolov8-torch
 
-[![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/ai4os-yolov8-torch/main)](https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/ai4os-yolov8-torch/job/main/)
+[![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/socib-beach-wracks-identification/main)](https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/socib-beach-wracks-identification/job/main/)
 
 Ultralytics YOLOv8 represents the forefront of object detection models, incorporating advancements from prior YOLO iterations while introducing novel features to enhance performance and versatility. YOLOv8 prioritizes speed, precision, and user-friendliness, positioning itself as an exceptional solution across diverse tasks such as object detection, ororiented bounding boxes detection, tracking, instance segmentation, and image classification. Its refined architecture and innovations make it an ideal choice for cutting-edge applications in the field of computer vision.
 This model suports: 
@@ -253,10 +253,6 @@ You can utilize the Swagger interface to upload your images or videos and obtain
 
     - A video with bounding boxes delineating objects of interest throughout.
     - A JSON string accompanying each frame, supplying bounding box coordinates, object names within the boxes, and confidence scores for the detected objects.
-
-# ⚡ Hyperparameter Optimization using Optuna + Hydra + MLflow
-
-Please refer to the `README.md` inside the `yolov8_api/hpo_yolov8` directory to see how you can use these tools to automatically optimize YOLOv8 hyperparameters from the command line.
 
 ## 📚 References
 

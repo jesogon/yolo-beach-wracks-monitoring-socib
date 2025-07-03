@@ -35,7 +35,7 @@ def test_prediction(test_predict):
     if accept == "image/png":
         assert isinstance(result, io.BytesIO)
     else:
-        if task_type in ["seg", "det"]:
+        if task_type in ["seg"]:
             missing_keys = [
                 key
                 for key in ["name", "class", "box"]

@@ -48,13 +48,13 @@ TEST_DATA_PATH = api.config.TEST_DATA_PATH
 
 
 # Fixture for the 'task_type' parameter
-@pytest.fixture(scope="module", params=["det", "seg"])
+@pytest.fixture(scope="module", params=["seg"])
 def task_type_param(request):
     return request.param
 
 
 # Fixture for the 'model' parameter
-@pytest.fixture(scope="module", params=["yolov8n.yaml"])
+@pytest.fixture(scope="module", params=["socib-beach-wracks-identification.yaml"])
 def model_param(request):
     return request.param
 
@@ -464,14 +464,10 @@ def train_kwds(
 @pytest.fixture(scope="module")
 def training(train_kwds):
     """Fixture to return trained model path."""
-    if train_kwds["task_type"] == "det":
-        train_kwds["data"] = os.path.join(
-            TEST_DATA_PATH, "det/data.yaml"
-        )
-    elif train_kwds["task_type"] == "seg":
-        train_kwds["data"] = os.path.join(
-            TEST_DATA_PATH, "seg/label.yaml"
-        )
+    train_kwds["data"] = os.path.join(
+        TEST_DATA_PATH, "seg/label.yaml"
+    )
+    
     path = api.utils.check_paths_in_yaml(
         train_kwds["data"], TEST_DATA_PATH
     )

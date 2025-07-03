@@ -1,59 +1,49 @@
-metadata_version: 2.0.0
-title: YoloV8 model
-summary: Object detection using YoloV8 model
+metadata_version: 1.0.0
+title: SOCIB Beach Wracks Identification
+summary: A deployable AI module for beach wrack monitoring based on YOLO
 description: |-
 
-  Ultralytics YOLOv8 represents the forefront of object detection (segmentation/classification) models incorporating advancements from   prior YOLO iterations while introducing novel features to enhance performance and versatility. 
-
-  YOLOv8 prioritizes speed, precision, and user-friendliness, positioning itself as an exceptional solution across diverse tasks such as object detection, oriented bounding boxes detection, tracking, instance segmentation, and image classification.
-  Its refined architecture and innovations make it an ideal choice for cutting-edge applications in the field of computer vision.
-
-  YOLOv8 prioritizes speed, precision, and user-friendliness, positioning itself as an exceptional solution across diverse
-  tasks such as object detection, oriented bounding boxes detection, tracking, instance segmentation, and image classification.
-  Its refined architecture and innovations make it an ideal choice for cutting-edge applications in the field of computer vision.
-  The PREDICT method for object detection accepts either an image (in various formats) or a video as input and returns a JSON, image,
-  PDF, or video as output, including bounding boxes around the objects of interest that meet a specified probability threshold. For 
-  example, if you input an image containing both a cat and a dog, and the model predicts a 50% probability for the dog and 80% for
-  the cat, setting the threshold to 70% will result in only the cat being detected, as its probability exceeds 70%.
-  The same PREDICT method is also used for semantic segmentation and classification, where the output includes segmented objects
-  in the image or video, or the classification of objects, respectively. The following demonstrates the outputs for classification detection, and segmentation tasks.
- 
-  <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/ai4os-yolov8-torch/main/tests/data/det/catin_cls.png'/>
-   
-  <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/ai4os-yolov8-torch/main/tests/data/det/catindet.png'/>
-   
-  <img class='fit', src='https://raw.githubusercontent.com/ai4os-hub/ai4os-yolov8-torch/main/tests/data/det/catin_seg.png'/>
+  **The Balearic Islands Coastal Observing and Forecasting System** ([SOCIB]((https://www.socib.es/))) is a Unique Scientific and Technical Infrastructure (ICTS) that provides oceanographic data and services for the Western Mediterranean. 
+  A key component is its Beach Monitoring Facility, which is dedicated to understanding coastal processes to foster sustainable, science-based management of the Balearic Islands' beaches. 
+  This facility studies erosion, sediment transport, and climate change effects, using advanced methods, including imaging technologies, to provide reliable data and expert advice.
   
-  You can use this model to retrain it on your custom dataset. For this purpose, please refer to the README to learn how to
-   structure your dataset for different tasks. After preparing the dataset, you can adjust hyperparameters, such as the learning 
-   rate or model version, and train the model using transfer learning. Additionally, you can use MLFLOW to track your training 
-   experiments. 
-  To do so, you will need to set certain environment variables, which are explained in detail in the module's README file.
+  **Beach wracks** are onshore depositions of detached marine vegetation, such as seagrass, that accumulate on shorelines. This process occurs on daily to weekly timescales, resulting in highly patchy and temporally variable phenomena, forming either sparse patches or dense wedge structures of few centimeters to several meters in thickness. 
+  These accumulations play a role in beach and foredune dynamics, but their presence often conflicts with tourism, leading to frequent removal. This presents a complex management challenge that requires effective monitoring. 
+  Imaging technologies provide a cost-effective and high-resolution solution for beach wracks monitoring, allowing them to capture the rapid changes in beach wrack distribution and abundance.
+   
+  The **SOCIB Beach Wracks Identification** module is an AI-based application automates the detection and segmentation of beach wracks from RGB images, with the ability to differentiate between various densities of wrack accumulation. 
+  This application is built upon the YOLO11 architecture, selected for its high-speed inference, making it suitable for both static images and near-real-time video streams. 
+  See examples of input(top) and output(bottom) images below:
   
-  **NOTE**:
-  Among the training arguments, there are options related to augmentation, such as flipping, scaling, etc. 
-  The default values are set to automatically activate some of these options during training.
-  If you want to disable augmentation entirely or partially, please review the default values and adjust them accordingly to deactivate the desired augmentations.
-
+  <imgclass='fit', src='https://raw.githubusercontent.com/ai4os-hub/socib-beach-wracks-identification/main/tests/data/bwracks_output_example.png'/>
+  
+  The model was trained using the Beach Wrack Identification Labelled Dataset ([BWILD](https://doi.org/10.5281/zenodo.12698763)), which contains a diverse set of images covering different fields of view, lighting conditions, and wrack abundance. 
+  Data augmentation and hyperparameter optimization were employed to ehance model's performance and generalization. 
+  The framework is designed to be extensible, allowing users to retrain the model on custom datasets. For this purpose, please refer to the README to learn how to structure your dataset for different tasks. 
+  After preparing the dataset, you can adjust hyperparameters, such as the learning rate or model version, and train the model using transfer learning. 
+  
   **References**
-  1. Jocher, G., Chaurasia, A., & Qiu, J. (2023). YOLO by Ultralytics (Version 8.0.0) [Computer software]. https://github.com/ultralytics/ultralytics
-  2. https://docs.ultralytics.com
-  3. Redmon, J., et al., You Only Look Once: Unified, Real-Time Object Detection, 2015, https://arxiv.org/abs/1506.02640 [cs.CV]
+  Jocher, G., Chaurasia, A., & Qiu, J. (2023). YOLO by Ultralytics [Computer software]. https://github.com/ultralytics/ultralytics
+  Soriano-González, J., et al. (2025). BWILD: Beach seagrass Wrack Identification Labelled Dataset [Data set]. Zenodo. https://doi.org/10.5281/zenodo.12698763
+  Soriano-González, J., et al. (2025). Machine learning-driven shoreline extraction and beach seagrass wrack detection from beach imaging systems. In Proceedings of the 10th Coastal Dynamics Conference (Aveiro). 
+
 dates:
-  created: '2023-08-09'
-  updated: '2024-08-12'
+  created: '2025-07-03'
+  updated: '2024-07-03'
 links:
-  source_code: https://github.com/ai4os-hub/ai4os-yolov8-torch
-  docker_image: ai4oshub/ai4os-yolov8-torch
+  source_code: https://github.com/ai4os-hub/socib-beach-wracks-identification
+  docker_image: ai4os-hub/socib-beach-wracks-identification
   ai4_template: ai4-template/1.9.9
 tags:
   - deep learning
-  - object detection
+  - beach monitoring
+  - yolo
   - vo.imagine-ai.eu
-  - general purpose
 tasks:
   - Computer Vision
-  - Classification
+  - Transfer learning
+  - Object Detection
+  - Instance Segmentation
 categories:
   - AI4 pre trained
   - AI4 trainable

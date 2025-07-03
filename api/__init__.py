@@ -36,7 +36,7 @@ logger.setLevel(config.LOG_LEVEL)
 
 # global var
 
-MLFLOW_MODEL_NAME = "yolov8_footballPlayersDetection"
+MLFLOW_MODEL_NAME = "yolo11_beach_wracks_identification"
 
 
 def get_metadata():
@@ -88,33 +88,16 @@ def predict(**args):
     logger.debug("Predict with args: %s", args)
     try:
         if args["model"] is None:
-            # Load the (pretrained) model from mlflow registry if exists
-            if args["mlflow_fetch"]:
-                path = mlflow_fetch()
-                if path is not None and os.path.exists(path):
-                    args["model"] = utils.validate_and_modify_path(
-                        path, config.MODELS_PATH
-                    )
-                    print("args_model", args["model"])
-            else:
-                # No model fetched from MLflow, use the default model
-                args["model"] = config.DEFAULT_MODEL_PATH  # Only segmentation is enabled
-                # args["model"] = utils.modify_model_name(
-                #     "yolov8n.pt", args["task_type"]
-                # )
+            args["model"] = config.DEFAULT_MODEL_PATH  # Only segmentation is enabled
 
         else:
             path = os.path.join(args["model"], "weights/best.pt")
             args["model"] = utils.validate_and_modify_path(
                 path, config.MODELS_PATH
             )
+
         task_type = args["task_type"]
-        args.pop("mlflow_fetch", None)
-        if task_type == "seg" and args["augment"]:
-            # https://github.com/ultralytics/ultralytics/issues/859
-            raise ValueError(
-                "augment for segmentation has not been supported yet"
-            )
+
         with tempfile.TemporaryDirectory() as tmpdir:
             for f in [args["files"]]:
                 shutil.copy(
@@ -140,7 +123,7 @@ def predict(**args):
 @utils.train_arguments(schema=schemas.TrainArgsSchema)
 def train(**args):
     """
-    Trains a yolov8 model using the specified arguments.
+    Trains a yolo11 model using the specified arguments.
 
     Args:
         **args (dict): A dictionary of arguments for training the model

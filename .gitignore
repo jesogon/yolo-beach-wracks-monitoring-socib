@@ -144,11 +144,10 @@ GTAGS
 
 # Directoris #
 ###################################
-data/raw/* 
-data/raw/* 
+data/raw/*  
 wandb/*
 models/*
 
 # Allow the best model
-!models/beach_wracks_segmentation
-!models/beach_wracks_segmentation/best.pt
+!models/yolo11_beach_wracks_identification
+!models/yolo11_beach_wracks_identification/best.pt

@@ -71,7 +71,7 @@ class PredArgsSchema(marshmallow.Schema):
         metadata={
             "description": "Load a model from your MLflow model registry. "
             "Please set the MLFLOW_MODEL_NAME in the "
-            "yolov8_api/config.py file to be loaded for "
+            "api/config.py file to be loaded for "
             "prediction. Make sure you have passed the environment "
             "variables related to your MLflow (See readme)."
         },
@@ -183,8 +183,8 @@ class TrainArgsSchema(marshmallow.Schema):
     model = fields.Str(
         metadata={
             "description": " name of the model to train\n"
-            '"yolov8X.yaml" bulid a model from scratch\n'
-            '"yolov8X.pt" load a pretrained model (recommended for training)',
+            '"yolo11m.yaml" bulid a model from scratch\n'
+            '"yolo11m.pt" load a pretrained model (recommended for training)',
             "enum": config.MODEL_LIST,
         },
         required=True,
@@ -194,7 +194,7 @@ class TrainArgsSchema(marshmallow.Schema):
         metadata={
             "description": "Path to the config data file (for seg and det) or "
             "data (cls task), e.g., 'root/path/to/mydata/data.yaml' or "
-            "if it is in the 'path/to/ai4os-yolov8-torch/data/raw' just"
+            "if it is in the 'path/to/socib-beach-wracks-identification/data/raw' just"
             "mydata/data.yaml"
         },
         allow_none=True,
@@ -217,7 +217,7 @@ class TrainArgsSchema(marshmallow.Schema):
         metadata={
             "description": "Number of images per batch (-1 for AutoBatch)",
         },
-        load_default=2,
+        load_default=16,
     )
     imgsz = fields.Int(
         metadata={
@@ -265,7 +265,7 @@ class TrainArgsSchema(marshmallow.Schema):
             "description": "Number of worker threads for data loading"
             " (per RANK if DDP)",
         },
-        load_default=4,
+        load_default=0,
     )
 
     optimizer = fields.Str(
@@ -290,7 +290,7 @@ class TrainArgsSchema(marshmallow.Schema):
         metadata={
             "description": "Random seed for reproducibility",
         },
-        load_default=42,
+        load_default=0,
     )
     deterministic = fields.Bool(
         metadata={

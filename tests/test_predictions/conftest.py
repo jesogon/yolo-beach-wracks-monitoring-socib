@@ -47,7 +47,7 @@ from api import config
 import fnmatch
 
 DATA_FILES = os.listdir(
-    os.path.join(config.TEST_DATA_PATH, "det/test")
+    os.path.join(config.TEST_DATA_PATH, "seg/test")
 )
 
 
@@ -59,7 +59,7 @@ DATA_FILES = os.listdir(
 )
 def files(request):
     file = os.path.join(
-        os.path.join(config.TEST_DATA_PATH, "det/test"), request.param
+        os.path.join(config.TEST_DATA_PATH, "seg/test"), request.param
     )
 
     content_type = "application/octet-stream"
@@ -67,7 +67,7 @@ def files(request):
 
 
 # Fixture for the 'model' parameter
-@pytest.fixture(scope="module", params=[None])
+@pytest.fixture(scope="module", params=["socib-beach-wracks-identification.yaml"])
 def model_param(request):
     return request.param
 
@@ -78,7 +78,7 @@ def mlflow_fetch(request):
 
 
 # Fixture for the 'task_type' parameter
-@pytest.fixture(scope="module", params=["cls", "det", "seg"])
+@pytest.fixture(scope="module", params=["seg"])
 def task_type_param(request):
     return request.param
 

@@ -132,7 +132,7 @@ def modify_model_name(model_name, task_type):
     Modify the model name based on the task type.
 
     Args:
-        model_name (str): The original model name (e.g., "yolov8n.yaml").
+        model_name (str): The original model name (e.g., "yolov11m.yaml").
         task_type (str): The task type ("det", "seg", "cls").
 
     Returns:
